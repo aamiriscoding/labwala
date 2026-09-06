@@ -1,0 +1,175 @@
+.hero {
+  position: relative; overflow: hidden;
+  padding: 60px 0 48px;
+  margin-bottom: 40px;
+}
+.heroGrid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 40px 40px; opacity: 0.35;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, var(--color-primary-glow) 0%, transparent 60%);
+  pointer-events: none;
+}
+.heroInner { position: relative; z-index: 1; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  font-size: 12px; font-family: var(--font-mono);
+  color: var(--color-primary); margin-bottom: 20px;
+}
+.title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(28px, 5vw, 52px);
+  letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px;
+}
+.accent { color: var(--color-primary); }
+.sub {
+  font-size: 15px; color: var(--color-text-secondary);
+  line-height: 1.7; max-width: 480px;
+}
+
+/* Skeleton */
+.skeletons { display: flex; flex-direction: column; gap: 12px; max-width: 760px; margin: 0 auto; }
+.skeletonItem { height: 60px; border-radius: var(--radius-lg); }
+
+/* Category */
+.category { max-width: 760px; margin: 0 auto 36px; }
+.categoryTitle {
+  font-family: var(--font-display); font-weight: 700; font-size: 16px;
+  color: var(--color-primary); margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--color-border);
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* Accordion */
+.accordion { display: flex; flex-direction: column; gap: 8px; }
+
+.accordionItem {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.accordionOpen {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary-glow);
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.question:hover { color: var(--color-primary); }
+.accordionOpen .question { color: var(--color-primary); }
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: transform 0.25s ease;
+}
+.accordionOpen .chevron { transform: rotate(180deg); color: var(--color-primary); }
+
+.answerWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+.accordionOpen .answerWrap { grid-template-rows: 1fr; }
+
+.answer {
+  overflow: hidden;
+  padding: 0 20px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+.accordionOpen .answer { padding: 0 20px 18px; }
+
+/* Contact box */
+.contactBox {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: 44px 40px;
+  text-align: center;
+  box-shadow: var(--shadow-glow);
+}
+.contactTitle {
+  font-family: var(--font-display); font-weight: 800; font-size: 24px; margin-bottom: 10px;
+}
+.contactSub { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 24px; }
+.contactBtns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+  .contactBox { padding: 28px 20px; }
+  .question { font-size: 14px; padding: 15px 16px; }
+  .answer { font-size: 13px; }
+}
+
+/* Contact section — cards layout */
+.contactSection {
+  max-width: 760px;
+  margin: 40px auto 0;
+}
+.contactHeading {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 20px;
+  margin-bottom: 16px; text-align: center;
+}
+.contactCards { display: flex; flex-direction: column; gap: 12px; }
+
+.contactCard {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  text-decoration: none; color: inherit;
+  transition: all 0.2s;
+}
+.contactCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.contactCardIcon {
+  width: 48px; height: 48px; border-radius: var(--radius-lg); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.whatsappIcon { background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.25); }
+.telegramIcon { background: rgba(0,136,204,0.12); color: #0088CC; border: 1px solid rgba(0,136,204,0.25); }
+
+.contactCardBody { flex: 1; }
+.contactCardTitle { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+.contactCardSub { font-size: 12px; color: var(--color-text-muted); }
+.contactCardArrow { font-size: 18px; color: var(--color-text-muted); transition: transform 0.2s; }
+.contactCard:hover .contactCardArrow { transform: translateX(4px); color: var(--color-primary); }
+
+@media (max-width: 768px) {
+  .contactCard { padding: 14px 16px; }
+  .contactCardIcon { width: 40px; height: 40px; }
+}

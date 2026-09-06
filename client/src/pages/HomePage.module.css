@@ -1,0 +1,124 @@
+/* Hero */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 92vh;
+  display: flex; align-items: center;
+  padding: 48px 0 40px;
+}
+.heroGrid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 44px 44px; opacity: 0.35;
+}
+.heroGlow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 55%, var(--color-primary-glow-strong) 0%, transparent 55%);
+  pointer-events: none;
+}
+.heroInner { position: relative; z-index: 1; }
+
+/* Status */
+.statusBadge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 5px 13px;
+  font-size: 12px; font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+.statusDot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.statusOpen { background: var(--color-success); animation: pulse-glow 2s ease-in-out infinite; }
+.statusClosed { background: var(--color-danger); }
+.locationBadge {
+  display: flex; align-items: center; gap: 3px;
+  border-left: 1px solid var(--color-border);
+  padding-left: 8px;
+  color: var(--color-text-muted);
+}
+
+/* Title */
+.heroTitle {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(44px, 8.5vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+.heroAccent { color: var(--color-primary); }
+
+.heroSub {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 460px;
+  margin-bottom: 28px;
+}
+
+.heroActions { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+
+/* Stats — inside hero */
+.stats { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+.stat { display: flex; flex-direction: column; gap: 1px; }
+.statNum { font-family: var(--font-mono); font-weight: 700; font-size: 20px; color: var(--color-primary); }
+.statLabel { font-size: 10px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* Features section */
+.features { padding: 60px 0 40px; }
+.sectionHeading { margin-bottom: 28px; }
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  justify-items: center;
+}
+.featureCard { padding: 24px; width: 100%; }
+.featureIcon {
+  width: 44px; height: 44px;
+  background: var(--color-primary-glow);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+}
+.featureName { font-family: var(--font-display); font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+.featureDesc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+
+/* CTA */
+.ctaSection { padding-bottom: 80px; }
+.ctaBox {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: 52px 48px;
+  text-align: center;
+  box-shadow: var(--shadow-glow);
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+.ctaTitle { font-family: var(--font-display); font-weight: 800; font-size: 30px; margin-bottom: 10px; }
+.ctaSub { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .hero { min-height: 85vh; padding: 40px 0 32px; }
+  .stats { gap: 18px; }
+  .heroTitle { font-size: clamp(36px, 10vw, 60px); }
+  .features { padding: 40px 0 24px; }
+  .ctaBox { padding: 32px 20px; }
+  .ctaTitle { font-size: 22px; }
+}
+
+/* Price comparison card highlight */
+.priceCard {
+  border-color: var(--color-primary) !important;
+  box-shadow: var(--shadow-glow);
+}
+.priceIcon {
+  background: var(--color-primary) !important;
+  color: #000 !important;
+}

@@ -1,0 +1,131 @@
+.card {
+  display: flex; flex-direction: column; overflow: hidden;
+  cursor: pointer; text-decoration: none; position: relative;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.pinned { border-color: var(--color-primary) !important; box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-card) !important; }
+
+.pinnedBadge {
+  position: absolute; top: 10px; left: 10px; z-index: 2;
+  width: 22px; height: 22px; background: var(--color-primary); color: #000;
+  border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;
+}
+.notesIndicator {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  width: 22px; height: 22px; background: rgba(245,158,11,0.15);
+  border: 1px solid var(--color-primary); border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--color-primary);
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.imageWrap { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; position: relative; background: var(--color-bg-secondary); }
+.image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.card:hover .image { transform: scale(1.05); }
+.imagePlaceholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); }
+
+/* Pills floating over the bottom of the image */
+.imagePills {
+  position: absolute; left: 8px; right: 8px; bottom: 8px;
+  display: flex; gap: 5px; flex-wrap: wrap;
+}
+.overlayBadge {
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius-full); padding: 3px 9px;
+  font-size: 10px; font-weight: 700; font-family: var(--font-mono);
+  letter-spacing: 0.04em; line-height: 1.5; border: 1px solid transparent;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+.stockOk {
+  background: rgba(34,197,94,0.85);
+  border-color: rgba(34,197,94,1); color: #fff;
+}
+.stockWarn {
+  background: rgba(245,158,11,0.9);
+  border-color: rgba(245,158,11,1); color: #1a1200;
+}
+.stockDanger {
+  background: rgba(239,68,68,0.88);
+  border-color: rgba(239,68,68,1); color: #fff;
+}
+.soldPill {
+  background: rgba(245,158,11,0.9);
+  border-color: rgba(245,158,11,1); color: #1a1200;
+}
+
+.content { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.name { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--color-text); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 6px; }
+
+/* Price block */
+.priceBlock { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.price { font-size: 17px; }
+
+.marketPriceWrap { position: relative; display: inline-flex; align-items: center; }
+.marketStrike {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  color: var(--color-danger); text-decoration: line-through;
+  cursor: help;
+}
+
+/* Proper tooltip UI */
+.marketTooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  pointer-events: none;
+  white-space: nowrap;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+.tooltipArrow {
+  width: 10px; height: 6px;
+  background: var(--color-bg-card);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  margin: 0 auto;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  position: relative; z-index: 1;
+  /* Flip arrow to point down */
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  margin-top: -1px;
+}
+.tooltipContent {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  display: flex; flex-direction: column; gap: 2px;
+  order: -1;
+}
+/* Reorder so content is above arrow */
+.marketTooltip { display: flex; flex-direction: column; }
+.tooltipContent { order: 0; }
+.tooltipArrow { order: 1; }
+
+.tooltipLabel { font-size: 11px; color: var(--color-text-muted); font-family: var(--font-mono); }
+.tooltipSave { font-size: 12px; color: var(--color-success); font-weight: 700; font-family: var(--font-mono); }
+
+.addBtn {
+  width: 34px; height: 34px; border-radius: var(--radius-md);
+  border: 1px solid var(--color-primary); background: var(--color-primary-glow);
+  color: var(--color-primary); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+}
+.addBtn:hover { background: var(--color-primary); color: #000; transform: scale(1.08); }
+
+.actionBtns { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.waBtn {
+  width: 34px; height: 34px; border-radius: var(--radius-md);
+  border: 1px solid #25D366; background: rgba(37, 211, 102, 0.1);
+  color: #25D366; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s; flex-shrink: 0; text-decoration: none;
+}
+.waBtn:hover { background: #25D366; color: #fff; transform: scale(1.08); }
+
+@media (max-width: 768px) {
+  .content { padding: 10px; }
+  .name { font-size: 13px; }
+}

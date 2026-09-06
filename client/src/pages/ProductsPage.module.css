@@ -1,0 +1,37 @@
+.header { margin-bottom: 20px; }
+.resultCount { font-size: 13px; color: var(--color-text-muted); font-family: var(--font-mono); margin-top: 4px; }
+
+.categoryTabs {
+  display: flex; gap: 6px; flex-wrap: nowrap;
+  overflow-x: auto; margin-bottom: 4px; padding-bottom: 4px;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.categoryTabs::-webkit-scrollbar { display: none; }
+.catTab {
+  padding: 5px 13px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: none; color: var(--color-text-secondary);
+  font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.catTab:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.catTabActive { background: var(--color-primary); color: #000 !important; border-color: var(--color-primary) !important; font-weight: 700; }
+
+.skeletonCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
+.skeletonImage { height: 180px; width: 100%; }
+.skeletonContent { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 40px; }
+.pageBtn {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: none; color: var(--color-text-secondary);
+  font-size: 13px; cursor: pointer; transition: all 0.2s;
+}
+.pageBtn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.pageBtnActive { background: var(--color-primary) !important; color: #000 !important; border-color: var(--color-primary) !important; font-weight: 700; }
